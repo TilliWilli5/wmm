@@ -1,0 +1,11 @@
+input, button
+{
+border-radius:5px;
+border-style:none;
+border:1px solid black;
+background-color:#00c0a0;
+}
+div
+{
+border:1px solid black;
+}

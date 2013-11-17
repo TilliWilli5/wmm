@@ -1,0 +1,29 @@
+html
+{
+background-color:CornflowerBlue;
+font-size:2em;
+}
+.wall
+{
+position:fixed;
+left:60%;
+top:0%;
+/border:1px solid red;
+display:inline-block;
+cursor:pointer;
+}
+.layer
+{
+position:relative;
+/border:3px solid green;
+}
+.brick
+{
+border:1px solid black;
+border-radius:5px;
+display:inline-block;
+margin:4px;
+padding:2px;
+background-color:MistyRose;
+box-shadow:5px 5px 3px black;
+}

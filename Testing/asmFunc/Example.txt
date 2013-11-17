@@ -1,0 +1,5 @@
+gl.test = function mil(a,b){return a+b;};
+gl.second=function(a,b,c,d){
+var g=0;
+return a+c;
+}

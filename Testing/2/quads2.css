@@ -1,0 +1,35 @@
+div.CLASS_outerQuad
+{
+margin:2px;
+padding:0px;
+border:1px solid black;
+border-radius:5px;
+float:left;
+height:10em;
+width:10em;
+}
+div.CLASS_innerQuad
+{
+background-color:red;
+border-radius:5px;
+margin:auto;
+margin:0px;
+height:10em;
+width:10em;
+
+animation: toSmall 2s;
+animation-play-state:paused;
+animation-iteration-count:1;
+animation-fill-mode:forwards;
+animation-timing-function:linear;
+}
+@keyframes toSmall
+{
+0% {opacity:0.0;}
+100% {opacity:1.0;}
+}
+@keyframes toBig
+{
+0% {opacity:1.0;}
+100% {opacity:0.0;}
+}

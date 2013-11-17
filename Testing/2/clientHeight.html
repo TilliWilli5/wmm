@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	div#ID_input div{float:left;border:1px solid black;}
+	div#ID_output
+	{
+	background-color:black;
+	color:white;
+	margin:5px 0px 0px 0px;
+	min-width:100%;
+	//float:left;
+	text-align:center;
+	}
+	//div#ID_output div {text-align:center;}
+	div#ID_input
+	{
+	background-color:white;
+	//color:white;
+	margin:5px 0px 0px 0px;
+	min-width:100%;
+	//float:left;
+	text-align:center;
+	border:1px solid black;
+	}
+	body {margin:0px;}
+	textarea	{width:100%;}
+	button{border-radius:5px;border-style:none;border:1px solid black;background-color:#00c0a0;}
+	</style>
+	<script>
+		function WriteLine(s)
+		{
+			document.getElementById("ID_output").innerHTML += "<pre>" + "\u2605 " + s + "\n</pre>";
+		}
+		function Evaluate()
+		{
+			var console = document.getElementById("ID_console");
+			WriteLine( eval(console.value) );
+			console.value="";
+		}
+		function testd(s)
+		{
+			var e = document.createElement("div");
+			var att = document.createTextNode(s);
+			e.appendChild(att);
+			WriteLine("Height:"+e.clientHeight+" Width:"+e.clientWidth);
+			document.getElementById("ID_input").appendChild(e);
+			//WriteLine("Height:"+e.clientHeight+" Width:"+e.clientWidth);
+		}
+	</script>
+</head>
+<body>
+	<textarea id="ID_console" placeholder="CONSOLE"></textarea><br><button type="button" onclick="Evaluate()">Evaluate</button>
+	<div id="ID_input"><ins>INPUT</ins></div>
+	<div id="ID_output"><ins>OUTPUT</ins></div>
+	<script>
+		WriteLine("Test...");
+		testd("some");
+		testd("some1");
+		testd("some more");
+		testd("somesome");
+	</script>
+</body>
+</html>

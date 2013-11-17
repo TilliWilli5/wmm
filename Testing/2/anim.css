@@ -1,0 +1,17 @@
+img
+{
+position:relative;
+width:5%;
+height:5%;
+animation:anim 4s;
+animation-direction:normal;
+animation-fill-mode:backwards;
+animation-iteration-count:1;
+animation-timing-function:linear;
+animation-play-state:running;
+}
+@keyframes anim
+{
+0% {left:0%;}
+100% {left:95%;}
+}

@@ -1,0 +1,13 @@
+body
+{
+background-color:black;
+color:white;
+}
+div.CLASS_drop
+{
+//color:red;
+position:fixed;
+font-size:2em;
+text-shadow:0px 0px 18px #bbffff;
+font-family:"Tekton Pro";
+}

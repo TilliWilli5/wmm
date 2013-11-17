@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Table_factory_style.css">
+	<script src="Table_factory_stuff.js"></script>
+</head>
+<body>
+	<script>
+		var t = createTable(16,16);
+		t.X.innerHTML="Colors";
+		for(var i=0;i<16;i++)
+			for(var j=0;j<16;j++)
+			{
+				//t.item[i][j].style.backgroundColor = "rgb("+i*16+","+j*16+",255)";
+				t.item[i][j].innerHTML = i*16+"|"+j*16+"|"+0;
+			}
+		t.fill(fillTable);
+		var t2 = createTable(5,3);
+		t2.X.innerHTML = "Ordinal numerals";
+		t2.hHead[0].innerHTML = "Name";
+		t2.hHead[1].innerHTML = "Years";
+		t2.hHead[2].innerHTML = "Loaction";
+		t2.fillHHead("ID, Username , Password,,,");
+		t2.fillVHead("first, second , third,fourth,5th,");
+	</script>
+</body>
+</html>

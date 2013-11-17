@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	div#ID_output
+	{
+	background-color:black;
+	color:white;
+	margin:5px 0px 0px 0px;
+	min-width:100%;
+	//float:left;
+	text-align:center;
+	}
+	//div#ID_output div {text-align:center;}
+	div#ID_input
+	{
+	background-color:white;
+	//color:white;
+	margin:5px 0px 0px 0px;
+	min-width:100%;
+	//float:left;
+	text-align:center;
+	border:1px solid black;
+	}
+	body
+	{
+	margin:0px;
+	}
+	</style>
+	<script>
+		function WriteLine(s)
+		{
+			document.getElementById("ID_output").innerHTML += "<pre>" + "\u2605 " + s + "\n</pre>";
+		}
+		function click1()
+		{
+			WriteLine("GO");
+			WriteLine(arguments[0].type);
+			for(var i=0;i<arguments.length;i++)
+			{
+				var e = arguments[i];
+				for(var prop in e)
+				{
+					if(Object.prototype.toString.call(e[prop]) !== "[object Function]")
+						WriteLine(prop+": "+e[prop]);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="ID_input" onclick="click1(event)"><ins>INPUT</ins></div>
+	<div id="ID_output"><ins>OUTPUT</ins></div>
+	<script>
+		WriteLine("Test...");
+	</script>
+</body>
+</html>

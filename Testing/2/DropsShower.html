@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>div.CLASS_drop{border:1px solid black;background-color:red;float:left}</style>
+	<script>
+		var Min = 100;
+		var Max = 150;
+		function Shower(q)
+		{
+			for(var i=0;i<q;i++)
+			{
+				var div = document.createElement("div");
+				div.style.height = Math.floor(Math.random()*(Max-Min) + Min) +"px";
+				div.style.width = Math.floor(Math.random()*(Max-Min) + Min) +"px";
+				div.className = "CLASS_drop";
+				document.body.appendChild(div);
+			}
+		}
+		
+	</script>
+</head>
+<body>
+	<script>
+		Shower(100);
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="quads2.css">
+	<script>
+		//var DivH = Math.floor(window.innerHeight * 0.05);
+		//var DivW = Math.floor(window.innerWidth * 0.05);
+		//var DivS = 10;
+		//var DivT = "0.1em";
+		//var DivL = "0.1em";
+		var DivQ = 16;
+		var DivV = 10;
+		var DivA = 0.1;
+		//var DivR;
+		function zoomOut()
+		{
+			this.style.animationName = "toSmall";
+			//this.style.animationDirection = "normal";
+			//this.style.animationFillMode = "both"
+			this.style.animationPlayState = "running";
+		}
+		function zoomIn()
+		{
+			this.style.animationName = "toBig";
+			//this.style.animationDirection = "reverse";
+			//this.style.animationFillMode = "both"
+			this.style.animationPlayState = "running";
+		}
+	</script>
+</head>
+<body>
+	<script>
+		(function(){
+			for(var i=0; i<DivQ; i++)
+			{
+				var quadOuter = document.createElement("div");
+				quadOuter.class = "CLASS_outerQuad";
+				quadOuter.setAttribute("class","CLASS_outerQuad");
+				var quad = document.createElement("div");
+				quad.class = "CLASS_innerQuad";
+				quad.setAttribute("class","CLASS_innerQuad");
+				quad.onmouseover = zoomOut;
+				quad.onmouseout = zoomIn;
+				
+				quadOuter.appendChild(quad);
+				document.body.appendChild(quadOuter);
+			}
+		}());
+	</script>
+	
+</body>
+</html>

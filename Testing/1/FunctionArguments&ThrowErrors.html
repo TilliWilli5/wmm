@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	#output_id
+	{
+	border: 1px solid #000000;
+
+	}
+	iframe
+	{
+	border:0px;
+	resize:vertical;
+	}
+	textarea
+	{
+	resize:both;
+	}
+	img
+	{
+	border:10px solid #886677;
+	}
+	</style>
+</head>
+<body>
+	<textarea rows="5" cols="20" id="input_id" placeholder="type JS code here..."></textarea>
+	<button type="button" onclick="eval(document.getElementById('input_id').value)">Evaluate code</button>
+	<div>
+		<h1 id="output_id"><br></h1>
+	</div>
+</body>
+</html>

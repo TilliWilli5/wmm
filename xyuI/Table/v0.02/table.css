@@ -1,0 +1,71 @@
+html
+{
+font-family: 'Orbitron', sans-serif;
+font-weight: 600;
+font-size:1.1em;
+background-color:gainsboro;
+}
+.xyuiTableShell
+{
+display:inline-block;
+/float:left;
+resize:both;
+overflow:auto;
+margin:auto;
+padding:10px;
+}
+.xyuiTable
+{
+/resize:both;
+/overflow:auto;
+/margin:auto;
+width:98%;
+height:90%;
+cursor:pointer;
+border-radius:15px;
+border:1px solid gainsboro;
+box-shadow:1px 2px 5px black;
+/border-collapse:collapse;
+}
+.xyuiHeadH, .xyuiHeadX
+{
+font-size:1.6em;
+background-color:slategrey;
+color:deepskyblue;
+}
+.xyuiHeadX
+{
+border-radius:15px 0px 0px 0px;
+padding-left:5px;
+/border:1px solid;
+/border-right:1px solid gainsboro;
+}
+.xyuiHeadH:last-child
+{
+border-radius:0px 15px 0px 0px;
+}
+.xyuiCell, .xyuiHeadV
+{
+/font-size:100%;
+/text-align:center;
+padding-left:5px;
+background-color:deepskyblue;
+border-top:1px solid gainsboro;
+text-shadow: 0px 0px 1px black;
+/text-shadow:1px 0px black,-1px 0px black,0px 1px black,0px -1px black;
+/text-shadow:1px 0px slategrey,-1px 0px slategrey,0px 1px slategrey,0px -1px slategrey;
+color:white;
+}
+.xyuiCell:first-child
+{
+padding-left:5px;
+/border-right:1px solid gainsboro;
+}
+tr:last-child td:first-child
+{
+border-radius:0px 0px 0px 15px;
+}
+tr:last-child td:last-child
+{
+border-radius:0px 0px 15px 0px;
+}

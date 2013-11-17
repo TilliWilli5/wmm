@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+textarea
+{
+resize:both;
+}
+</style>
+<script>
+	function ShowTime()
+	{
+		var Clock = document.getElementById("Clock_id");
+		var Output = document.getElementById("Output_id");
+		var d = new Date(Clock.value);
+		Output.innerHTML = "value is "+Clock.value+"<br>"+"time is"+d +"<br>"+Date();
+	}
+</script>
+<head>
+	<body>
+	<div id="Clock">.</div>
+	</body>
+</html>

@@ -1,0 +1,9 @@
+\N	Coal	2	1	1
+NULL	Tea	0.1	0.001	3
+NULL	Coffee	0.1	0.001	5
+NULL	Cacao	0.1	0.001	5
+NULL	Tabacco	0.1	0.001	10
+NULL	Alcohol	1	0.001	2
+NULL	Saber	2.5	0.01	50;
+NULL	Musket	3.5	0.02	55;
+NULL	Pistol	1.8	0.005	70;

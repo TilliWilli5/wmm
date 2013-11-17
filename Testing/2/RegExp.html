@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+	div#ID_output
+	{
+	background-color:black;
+	color:white;
+	margin:5px 0px 0px 0px;
+	min-width:100%;
+	//float:left;
+	text-align:center;
+	}
+	//div#ID_output div {text-align:center;}
+	div#ID_input
+	{
+	background-color:white;
+	//color:white;
+	margin:5px 0px 0px 0px;
+	min-width:100%;
+	//float:left;
+	text-align:center;
+	border:1px solid black;
+	}
+	body {margin:0px;}
+	textarea	{width:100%;}
+	button{border-radius:5px;border-style:none;border:1px solid black;background-color:#00c0a0;}
+	</style>
+	<script>
+		function WriteLine(s)
+		{
+			document.getElementById("ID_output").innerHTML += "<pre>" + "\u2605 " + s + "\n</pre>";
+		}
+		function Evaluate()
+		{
+			var console = document.getElementById("ID_console");
+			WriteLine( eval(console.value) );
+			console.value="";
+		}
+	</script>
+</head>
+<body>
+	<textarea id="ID_console" placeholder="CONSOLE"></textarea><br><button type="button" onclick="Evaluate()">Evaluate</button>
+	<div id="ID_input"><ins>INPUT</ins><pre>The replace() method performs a search-and-replace operation. It takes a regular expression
+as its first argument and a replacement string as its second argument. It
+searches the string on which it is called for matches with the specified pattern. If the
+regular expression has the g flag set, the replace() method replaces all matches in the
+string with the replacement string; otherwise, it replaces only the first match it finds.
+If the first argument to replace() is a string rather than a regular expression, the method
+searches for that string literally rather than converting it to a regular expression with
+the RegExp() constructor, as search() does. As an example, you can use replace() as
+follows to provide uniform capitalization of the word “JavaScript” throughout a string
+of text:</pre></div>
+	<div id="ID_output"><ins>OUTPUT</ins></div>
+	<script>
+		WriteLine("Test...");
+		var Text = document.getElementById("ID_input").innerHTML;
+	</script>
+</body>
+</html>

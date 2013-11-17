@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+</head>
+<body>
+	<div id="ID_ansemble"><p>ANSEMBLE</p></div>
+	
+	<script>
+		
+		
+		var obj = {x:10, y:"Need",z:{vloj:"recursive"}};
+		console.log(obj);
+		var d = document.createElement("div");
+		d.dataset.self = obj;
+		d.setUserData("self2",obj,null);
+		d.innerHTML = "adwdawdawdaw";
+		console.log(d.dataset.self);
+		document.body.appendChild(d);
+		//ShowComposition(h9pre);
+	</script>
+</body>
+</html>

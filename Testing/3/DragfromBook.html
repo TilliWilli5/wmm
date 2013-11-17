@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.CLASS_filler
+{
+/width:40%;
+/height:40%;
+border:2px solid #ff90ff;
+/float:left;
+background-color:cyan;
+border-radius:5px;
+
+}
+div.f
+{
+border:1px solid black;
+/float:left;
+position:relative;
+overflow:auto;
+//top:12px;
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.1.0/prototype.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/scriptaculous.js"></script>
+ 
+ 
+ </head>
+<body>
+	<script src="getScrollOffsets.js"></script> <!-- drag() requires this -->
+<script src="Drag.js"></script> <!-- defines drag() -->
+<!-- The element to be dragged -->
+<div style="position:absolute; left:100px; top:100px; width:250px;
+background-color: white; border: solid black;">
+<!-- The "titlebar" to drag it with. Note the onmousedown attribute. -->
+<div style="background-color: gray; border-bottom: dotted black;
+padding: 3px; font-family: sans-serif; font-weight: bold;"
+onmousedown="drag(this.parentNode, event);">
+Drag Me <!-- The content of the titlebar -->
+</div>
+<p>This is a test. Testing, testing, testing.</p><p>Test</p><p>Test</p>
+</div>
+
+</body>
+</html>

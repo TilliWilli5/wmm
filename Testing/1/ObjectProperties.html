@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#output_id
+{
+border: 1px solid #000000;
+
+}
+iframe
+{
+border:0px;
+resize:vertical;
+}
+textarea
+{
+resize:both;
+}
+img
+{
+border:10px solid #886677;
+}
+</style>
+	<script>
+		function ShowProperties()
+		{
+			"use strict";
+			var output = document.getElementById("output_id");
+			var propName = document.getElementById("input_id").value;
+			output.innerHTML = "<pre>"+Object.getOwnPropertyNames(eval(propName))+"</pre>"+"<br>"+Object.keys(eval(propName));
+			//output.innerHTML = Object.keys(this[propName]);
+			//output.innerHTML = window.ShowProperties();
+			var output2 = document.getElementById("output_id2");
+			output2.innerHTML = "<pre>"+(new Date).toJSON+"</pre>";
+		}
+	</script>
+</head>
+<body>
+<script>
+
+</script>
+
+<textarea rows="5" cols="20" id="input_id"></textarea>
+<button type="button" onclick="ShowProperties()">Click</button>
+<div>
+<h1 id="output_id"></h1>
+<h1 id="output_id2"></h1>
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><style>div{border:1px solid black;
+}</style></head>
+<body>
+	<form name="fuck">
+		<input type="button" value="Input"></input>
+		<button type="button">Button</button>
+		<input type="file" onchange="alert(this.value)"></input>
+		Some text about lalalalla.....
+		<br/><br/><br/><div id="editor" contenteditable>Cli<p style="font-family:arial;">ck </p>to edit</div>
+		<button type="button" onclick="console.log(document.queryCommandValue ('fontname'))">ButtonFont</button>
+	</form>
+	<script src="http://yui.yahooapis.com/3.10.3/build/yui/yui-min.js">YUI().use('node', 'event', function (Y) {});</script>
+</body>
+</html>

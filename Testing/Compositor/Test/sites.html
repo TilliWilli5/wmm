@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.cell , #field
+{
+z-index: -1;
+}
+.cell
+{
+opacity:0.25;
+transition: opacity 2s;
+float:left;
+border:1px solid #202020;
+border-radius:10px;
+/background-color:white;
+background-color:#888888;
+width:40px;
+height:40px;
+margin:3px;
+}
+.cell:hover
+{
+opacity:1.0;
+transition: opacity 0.6s;
+}
+#field
+{
+position:fixed;
+top:0px;
+left:0px;
+width:100%;
+height:100%;
+background-color:#888888;
+}
+
+/*----------------------BG ended--------------------------------------*/
+
+.Item{background-color:#00bb99;width:25%;border:1px black solid;border-radius:5px;float:left;}
+.Item:hover{background-color:#00ddbb;}
+#DnDList{background-color:#dddddd;width:50%;border-radius:10px;box-shadow:10px 10px 5px;overflow:auto;}
+#test{background-color:#dd44dd;border:1px black solid}
+button{margin:8px;}
+</style>
+
+<script>
+function breakout(obj)
+{
+obj.style.backgroundColor="hsl("+360*Math.random()+",100%,50%)"; //"rgb("+255*Math.random()+","+255*Math.random()+","+255*Math.random()+")";
+}
+function diminish(obj)
+{
+//obj.style.backgroundColor="white";
+}
+
+/*----------------------BG ended(in script)--------------------------------------*/
+
+var newItemIndex=0;
+function changeItem(obj)
+{
+var newName = prompt("Please enter name");
+if(newName!=null && newName!="")
+{
+obj.innerHTML=newName;
+}
+}
+
+function addNewItem()
+{
+var newItemElement = document.createElement("div");
+var newItemElementText = document.createTextNode("#"+newItemIndex+" "+"Please type a name...");
+newItemElement.setAttribute("class","Item");
+newItemElement.setAttribute("onclick","changeItem(this)");
+newItemElement.setAttribute("draggable","true");
+newItemElement.setAttribute("ondragstart","drag(event)");
+newItemElement.setAttribute("ondragover","allowDrop(event)");
+newItemElement.setAttribute("ondrop","drop(event)");
+newItemElement.setAttribute("id",newItemIndex.toString());
+newItemElement.appendChild(newItemElementText);
+document.getElementById("List").appendChild(newItemElement);
+newItemIndex++;
+}
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+function drop(ev)
+{
+ev.preventDefault();
+var data = ev.dataTransfer.getData("Text");
+document.getElementById("List").insertBefore(document.getElementById(data), ev.target);
+//ev.target.appendChild(document.getElementById(data));
+}
+/*function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}*/
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+</script>
+</head>
+
+<!-------------------------------------------Start of body part----------------------------------------------->
+
+<body>
+<div id="field">
+<script>
+for(var i=0;i<500;i++)
+{
+document.write("<div class='cell' onmouseover='breakout(this)' onmouseout='diminish(this)'></div>");
+}
+</script>
+</div>
+<!--End of BG ^_^ */-->
+<div id="DnDList">
+<h1>Drag'n'Drop List</h1>
+<button type="button" onclick="addNewItem()">Add new</button> 
+<!--<div id="test" ondragover="allowDrop(event)" ondrop="drop(event)">Test here please</div>-->
+<div id="List"></div>
+<div id="Control">
+
+</div>
+</div>
+</body>
+
+</html>

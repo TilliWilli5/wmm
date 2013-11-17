@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div
+{
+border:1px solid #000000;
+margin:10px 5px 5px 10px;
+}
+div.voice
+{
+width:auto;
+height:auto;
+max-width: 50%;
+
+float:left;
+padding:1px 1px 1px 1px;
+border:1px solid #000000;
+margin:10px 5px 5px 10px;
+background-color:#ff00ff;
+}
+div#ID_ansemble
+{
+margin:0px 0px 0px 0px;
+min-width:100%;
+float:left;
+}
+div#ID_composition
+{
+margin:0px 5px 0px 5px;
+padding:0px 0px 0px 0px;
+min-width:auto;
+float:left;
+}
+div#ID_output
+{
+background-color:black;
+color:white;
+margin:5px 0px 0px 0px;
+min-width:100%;
+float:left;
+text-align:center;
+}
+body
+{
+padding:0px 0px 0px 0px;
+margin:0px 0px 0px 0px;
+}
+div#ID_tools
+{
+background-color:black;
+color:white;
+margin:5px 0px 0px 0px;
+min-width:100%;
+float:left;
+text-align:center;
+}
+div.element
+{
+float:left;
+outline-style:none;
+background-color:#ff77ff;
+border:1px solid blue;
+border-radius:3px;
+padding:1px;
+}
+</style>
+	<script>
+		/*function VoiceDummyLabel(label)
+		{
+			this.label = label || "empty";
+		}
+		function VoiceDummyNumber(n)
+		{
+			this.number = n || 0;
+		}*/
+		var GVI = [];
+		GVI.index=0;
+		function Voice(lab, tv, sv)
+		{
+			GVI[GVI.index] = this;
+			this.id = GVI.index++;
+			
+			this.label = lab || "empty";	//to show people some label, cocise description string
+			this.theVoice = tv || "";
+			this.theEcho = "";
+			this.type = (sv) ? "composite" : typeof(tv);
+			this.contribution = tv;
+			this.subVoices = sv || [];
+			this.count = (sv) ? sv.length : 0;
+			
+			//var self = this;
+			this.doAudition = function(){
+				this.contribution = this.theVoice;
+				for(var i = 0; i< this.count; i++)
+				{
+					this.subVoices[i].doAudition();
+					this.contribution += " " + this.subVoices[i].contribution;
+				}
+				this.contribution += this.theEcho;
+				return this.contribution;
+			}
+			this.addVoices = function(a){	//a must be an array i.e like this [v1, v2] or just simple[v1] but with brackets
+				for(var i=0;i<a.length;i++)
+					this.subVoices[this.count + i] = a[i];
+				this.count += a.length;
+			}
+		}
+		function WriteLine(s)
+		{
+			document.getElementById("ID_output").innerHTML += "<pre>"+ s + "\n" + "</pre>";
+		}
+		function ShowVoiceDiv(v)
+		{
+			var vdiv = document.createElement("div");
+			var text = document.createTextNode(v.label);
+			vdiv.appendChild(text);
+			vdiv.id = "voice"+v.id;
+			vdiv.className = "voice";
+			vdiv.onclick = ShowDivContent;
+			document.getElementById("ID_ansemble").appendChild(vdiv);
+		}
+		function ShowDivContent()
+		{
+			alert(this.id);
+		}
+		
+		
+	</script>
+</head>
+<body>
+	<div id="ID_output"><ins>OUTPUT</ins></div>
+	<div id="ID_tools">
+		<div class="element">
+			<input type="number" size="3" placeholder="Label">
+		</div>
+	</div>
+	<script>
+		
+	</script>
+</body>
+</html>

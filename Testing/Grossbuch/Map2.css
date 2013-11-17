@@ -1,0 +1,51 @@
+html
+{
+height:100%;
+width:100%;
+box-shadow:0px 0px 20px 15px black inset;
+}
+body
+{
+border:1px solid grey;
+background-image:url("500x.jpg");
+font-family: 'Leckerli One', cursive;
+font-size:1.18em;
+padding:40px;
+height:85%;
+}
+.map
+{
+/position:relative;
+/overflow:auto;
+/resize:both;
+padding:0px;
+margin:0px;
+/border:1px solid black;
+/border-radius:5px;
+background-image:url(GUI/SnapTick31op40.png), url(500x.jpg);
+/background-position:0% 0%;
+/background-repeat: no-repeat;
+/background-attachment:scroll;
+/width:620px;
+/height:620px;
+}
+.mapConteiner
+{
+position:relative;
+overflow:auto;
+resize:both;
+padding:0px;
+margin:0px;
+border:1px solid black;
+border-radius:5px;
+width:620px;
+height:620px;
+}
+.city
+{
+position:absolute;
+/border:1px solid green;
+font-family: 'Rosewood Std',regular;
+font-size:2em;
+}
+.city:hover{background-color:rgba(0,255,32,0.6);}

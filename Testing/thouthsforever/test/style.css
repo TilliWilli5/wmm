@@ -1,0 +1,36 @@
+body
+{
+background-color:black;
+color:white;
+}
+div#ID_memo
+{
+background-color:rgba(255,255,255,0.0);
+/opacity:1;
+/visibility:hidden;
+float:left;
+border:2px solid aqua;
+border-radius:5px;
+/border-color:red;
+box-shadow:0px 0px 20px 10px white;
+/margin:50px;
+
+}
+hr
+{
+border-style:solid;
+border-color:aqua;
+height:0px;
+margin:0px;
+clear:both;
+}
+textarea
+{
+border:1px solid rgba(255,255,255,0.0);
+border-radius:5px;
+float:right;
+background-color:rgba(255,255,255,0.1);
+color:white;
+/pagging:600px;
+/text-indent:40px
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="anim.css">
+	<script>
+		function Pause(){
+			
+			var e = document.getElementById("ID_mig");
+			e.style.animationName="anim";
+			
+			e.style.animationPlayState = "paused";
+		}
+		function Run(){
+			
+			var e = document.getElementById("ID_mig");
+			e.style.animationName="anim";
+			
+			e.style.animationPlayState = "running";
+		}
+		function Stop(){
+			var e = document.getElementById("ID_mig");
+			e.style.animationName="none";
+			
+		}
+	</script>
+</head>
+<body>
+	<button type="button" onclick="Pause()">Pause</button>
+	<button type="button" onclick="Run()">Run</button>
+	<button type="button" onclick="Stop()">Stop</button>
+	
+	<img id="ID_mig" src="index.jpg" height="64" width="64"></img>
+</body>
+</html>

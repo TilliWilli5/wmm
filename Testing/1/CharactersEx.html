@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		table
+		{
+			/border:1px solid black;
+			/font-family:MS Gothic;
+		}
+		td
+		{
+		/border:1px solid black;
+		text-align:center;
+		font-size:150%;
+		}
+		input#ID_preview, input#ID_previewDigit
+		{
+		border:1px solid black;
+		background-color:#30a060;
+		font-size:2em;
+		}
+		input#ID_page
+		{
+		width:30%;
+		}
+		/*.tooltip
+		{
+		border:1px solid black;
+		position:fixed;
+		top:0px;
+		left:0px;
+		}*/
+	</style>
+	<script>
+		var startIndex = 0;
+		var endIndex = 20;
+		var charPerLine = 50;
+		var Page = 0;
+		
+		highlight.prevElements = null;
+		highlight.prevColumn = null;
+		highlight.prevRow = null;
+		function highlight()
+		{
+			var elements = this.parentNode.childNodes;
+			var column = Array.prototype.indexOf.call(elements, this);
+			var row = Array.prototype.indexOf.call(this.parentNode.parentNode.childNodes, this.parentNode);
+			if(highlight.prevElements === null)
+			{
+				highlight.prevElements  = elements;
+				highlight.prevColumn = column;
+				highlight.prevRow = row;
+			}
+			for(var i=0; i<elements.length;i++)
+			{
+				if(highlight.prevRow)
+					highlight.prevElements[i].style.background = "#ffffff";
+				elements[i].style.backgroundColor="#505050";
+			}
+			for(var i=0; i<endIndex+1;i++)
+			{
+				if( (i !== row) && highlight.prevRow)
+					table.childNodes[i].childNodes[highlight.prevColumn].style.background = "#ffffff";
+				table.childNodes[i].childNodes[column].style.backgroundColor = "#505050";
+			}
+			highlight.prevElements  = elements;
+			highlight.prevColumn = column;
+			highlight.prevRow = row;
+			return row*charPerLine + column + 1;
+		}
+		function toHex(i){
+			var result="";
+			//var divisor = 16;
+			while(i/16>=1)
+			{
+				result += Math.ceil((i>>4).toString());
+				i /= 16;
+			}
+			return result+i%16;
+		}
+		function hintShow(ev){
+			//var hbox = document.createElement("div");
+			//hbox.style.position = "fixed";
+			var hbox = document.getElementsByClassName("tooltip")[0];
+			var val = this.innerHTML.charCodeAt(0);
+			hbox.innerHTML = "CODE:["+val+"]["+val.toString(16)+"]";
+			//hbox.style.top = ev.clientY+"px";
+			//hbox.style.left = ev.clientX+"px";
+			//hbox.style.visibility = "visible";
+			//hbox.style.zIndex = 255;
+			//console.log("ev.clientX:"+ev.clientX+"ev.clientY:"+ev.clientY);
+			//hbox.innerHTML ="fucked";
+			//document.body.appendChild(hbox);
+		}
+		function hintHide(ev){
+			document.getElementsByClassName("tooltip")[0].style.visibility = "hidden";
+		}
+		function toClipboard(event)
+		{
+			highlight.call(this);
+			if(!event.altKey)
+			{
+				document.getElementById("ID_preview").value += this.innerHTML;
+				document.getElementById("ID_previewDigit").value += "["+this.innerHTML.charCodeAt(0)+"]";
+			}
+			else
+			{
+				document.getElementById("ID_preview").value = this.innerHTML;
+				document.getElementById("ID_previewDigit").value = "["+this.innerHTML.charCodeAt(0)+"]";
+			}
+			var hbox = document.getElementsByClassName("tooltip")[0];
+			var val = this.innerHTML.charCodeAt(0);
+			hbox.innerHTML = "CODE:["+val+"]["+val.toString(16)+"]";
+		}
+		function tableUpdate(t)
+		{
+			tr = t.childNodes;
+			for(var i=1;i<tr.length;i++)
+			{
+				for(var j=1;j<tr[i].childNodes.length;j++)
+				{
+					//tr[i].childNodes[j].innerHTML = Page*endIndex*charPerLine + (i-1)*charPerLine + (j-1);
+					tr[i].childNodes[j].innerHTML = String.fromCharCode(Page*endIndex*charPerLine + (i-1)*charPerLine + (j-1));
+				}
+			}
+		}
+		function changePage()
+		{
+			Page = this.value;
+			tableUpdate(table);
+		}
+	</script>
+</head>
+<body>
+
+	<script>
+		var table = document.createElement("table");
+		table.id="ID_charCollection";
+		table.border = 1;
+		table.cellSpacing = 0;
+		
+		var tr = document.createElement("tr");
+		var th = document.createElement("th");
+		th.innerHTML = "Page:";
+		var n = document.createElement("input");
+		n.id = "ID_page";
+		n.type = "number";
+		n.value = Page;
+		n.size = 1;
+		n.min = 0;
+		n.onchange = changePage;
+		//n.maxlength = 1;
+		//n.width = 1;
+		th.appendChild(n) ;
+		tr.appendChild(th);
+		
+		for(var i=0; i<charPerLine;i++)
+		{
+			var th = document.createElement("th");
+			th.id = "ID_th"+i;
+			th.innerHTML = i;
+			tr.appendChild(th);
+		}
+		table.appendChild(tr);
+		
+		for(var i = startIndex; i<endIndex; i++)
+		{
+			var tr = document.createElement("tr");
+			var td = document.createElement("td");
+			td.innerHTML = i;
+			tr.appendChild(td);
+			for(var j = 0; j<charPerLine; ++j)
+			{
+				var index = (i*charPerLine + j);
+				var td = document.createElement("td");
+				td.id = "ID_td"+index;
+				td.onclick = toClipboard;
+				//td.onmouseover = hintShow;
+				//td.onmouseout = hintHide;
+				td.innerHTML = String.fromCharCode(index);
+				tr.appendChild(td);
+				//document.write("<td id=ID_td"+index+" onclick='highlight()'>" + String.fromCharCode(index) + "</td>");
+			}
+			table.appendChild(tr);
+			//document.write("<br>");
+		}
+		document.body.appendChild(table);
+		
+	</script>
+	<div class="tooltip">tooltip</div>
+	<hr><input type="text" id="ID_preview"><br><input type="text" id="ID_previewDigit">
+
+</body>
+</html>

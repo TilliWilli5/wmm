@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Compositor_style.css"/>
+	<script src="Compositor_stuff.js"></script>
+</head>
+<body>
+	<div id="ID_ansemble"><p>ANSEMBLE</p></div>
+	<div id="ID_composition"><p>COMPOSITION</p></div>
+	<div id="ID_output"><ins>OUTPUT</ins></div>
+	<script>
+		/*WriteLine("Guide");
+		WriteLine("Cats save the Wolrd");
+		var v1 = new Voice("Insert", "INSERT INTO");
+		var v2 = new Voice("VALUE","VALUE");
+		var v3 = new Voice("Type db name...", "need to type something");
+		var v4 = new Voice("Type additional clauses", "need to type something");
+		WriteLine(v4.doAudition());
+		var varr = new Voice("All", "STATEMENT:", [v1,v3,v2,v4]) ;
+		WriteLine("*******************");
+		WriteLine(varr.doAudition());
+		WriteLine("*******************");
+		WriteLine(varr.contribution);
+		ShowVoiceDiv(v1);
+		ShowVoiceDiv(v2);
+		ShowVoiceDiv(v3);
+		ShowVoiceDiv(v4);
+		varr.count = 4;
+		var vall = new Voice("Super","SUPER ABOVE [", [varr]);
+		vall.theEcho = " ]";
+		vall.doAudition();
+		WriteLine(vall.contribution);*/
+		
+		var h1 = new Voice("Insert","INSERT INTO");
+		var h2 = new Voice("Table name", "organizer");
+		var h3pre = new Voice("Quotes","'", [h2]);
+			h3pre.theEcho = "'";
+		var h4 = new Voice("Values","VALUES");
+		var h5 = new Voice("Stuff", "'Interview', '2013-06-25', 'metro Paveletskaya', 'Innova company. Designer scheduler'");
+		var h6pre = new Voice("Parenthesis","(", [h5]);
+			h6pre.theEcho = ")";
+		var h7 = new Voice("DB name","my");
+		var h8pre = new Voice("Use", "USE", [h7]);
+			h8pre.theEcho = ";";
+		var h9pre = new Voice("Record", "", [h8pre, h1, h3pre, h4, h6pre]);
+		WriteLine(h9pre.doAudition());
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="table.css">
+	<script src="table.js"></script>
+</head>
+<body>
+	<script>
+		var t = xyui.table.create(16,2,null,null,{headH:true,headV:true,headX:true,hl:"h",hlcolor:'seagreen'});
+		t.headX.innerHTML = "Time";
+		t.fillHH("Issue");
+		t.fillHV("7:00^7:00-7:10^7:10-7:30^7:30-7:50^7:50-8:00^8:00^9:00^9:00-9:20^before 11:00^11:00-18:10^18:20^18:50-18:55^22:00-23:00^24:00^some^some^some^^");
+		t.fillB("Встал^Нет я серъёзно... Встал!!!^Пришёл в себя, сполоснулся, зубы, заварил чай, высушил голову^Зарисовал свечу, маленький анализ, почитал новости^\
+		Собрался^Выход из дома^Пришёл на работу^20 минут пришёл в себя^\
+		до 11 придумать чо делать сюда должен войти анализ рынков, ознакомление с новостями расписать подробнее когда определюсь^работа\
+		^вышел с работы^в школе^вернулся домой^спать!!!важнейшее вовремя^^^^^^^^^^^^^^");
+		
+		
+		
+		//var t2 = xyui.table.create(10,10,null,null,{hl:"x"});
+		//t2.fulfil(fillTable);
+		//t2.headX.innerHTML = "Ordinal numerals";
+		//t2.headH[0].innerHTML = "Name";
+		//t2.headH[1].innerHTML = "Years";
+		//t2.fillHH("ID, Username , Password,,,");
+		//t2.fillHV("first, second , third,fourth,5th,");
+		
+	</script>
+</body>
+</html>

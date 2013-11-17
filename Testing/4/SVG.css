@@ -1,0 +1,11 @@
+textarea#content
+{
+background-color:grey;
+float:left;
+border:1px solid black;
+}
+div#appearance
+{
+background-color:white;
+border:1px solid black;
+}

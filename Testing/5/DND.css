@@ -1,0 +1,35 @@
+body
+{
+position:relative;
+background-color:pink;
+border:1px solid black;
+margin:0px;
+padding:0px;
+width:100%;
+height:100%;
+}
+div
+{
+display:inline-block;
+background-color:grey;
+border:1px solid black;
+position:absolute;
+}
+div#d1
+{
+//display:inline-block;
+background-color:red;
+border:1px solid black;
+height:100px;
+}
+svg
+{
+
+width:10000px;
+height:10000px;
+}
+.x
+{
+border:1px solid green;
+padding:5px;
+}

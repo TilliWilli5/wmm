@@ -1,0 +1,44 @@
+div
+{
+border:1px solid #000000;
+margin:10px 5px 5px 10px;
+}
+div.voice
+{
+width:auto;
+height:auto;
+max-width: 50%;
+
+float:left;
+padding:1px 1px 1px 1px;
+border:1px solid #000000;
+margin:10px 5px 5px 10px;
+background-color:#ff00ff;
+}
+div#ID_ansemble
+{
+margin:0px 0px 0px 0px;
+min-width:100%;
+float:left;
+}
+div#ID_composition
+{
+margin:0px 5px 0px 5px;
+padding:0px 0px 0px 0px;
+min-width:auto;
+float:left;
+}
+div#ID_output
+{
+background-color:black;
+color:white;
+margin:5px 0px 0px 0px;
+min-width:100%;
+float:left;
+text-align:center;
+}
+body
+{
+padding:0px 0px 0px 0px;
+margin:0px 0px 0px 0px;
+}

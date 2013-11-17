@@ -1,0 +1,34 @@
+table
+{
+/border:1px solid black;
+/font-family:MS Gothic;
+/background-color:white;
+/border-collapse: collapse;
+}
+td
+{
+/border:3px solid rgba(0,0,0,0.1);
+text-align:center;
+font-size:150%;
+/box-shadow:0px 0px 3px 0px green inset;
+border-radius:7px;
+background-color:firebrick;
+/margin:10px;
+/padding:10px;
+}
+td:hover
+{
+background-color:white;
+}
+tr:nth-child(even)
+{
+/background-color:Wheat;
+}
+tr:nth-child(odd)
+{
+/background-color:slategrey;
+}
+tr:first-child
+{
+/background-color:DarkOliveGreen ;
+}

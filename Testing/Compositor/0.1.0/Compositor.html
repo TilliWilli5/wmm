@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="Compositor_style.css"/>
+	<script src="Compositor_stuff.js"></script>
+</head>
+<body>
+	<div id="ID_ansemble"><p>ANSEMBLE</p></div>
+	
+	<script>
+		var h1 = new Voice("Insert","INSERT INTO");
+		var h2 = new Voice("Table name", "organizer");
+		var h3pre = new Voice("Quotes","'", [h2]);
+			h3pre.theEcho = "'";
+		var h4 = new Voice("Values","VALUES");
+		var h5 = new Voice("Stuff", "'Interview', '2013-06-25', 'metro Paveletskaya', 'Innova company. Designer scheduler'");
+		var h6pre = new Voice("Parenthesis","(", [h5]);
+			h6pre.theEcho = ")";
+		var h7 = new Voice("DB name","my");
+		var h8pre = new Voice("Use", "USE", [h7]);
+			h8pre.theEcho = ";";
+		var h9pre = new Voice("Record", "", [h8pre, h1, h3pre, h4, h6pre]);
+		ShowComposition(h9pre);
+	</script>
+</body>
+</html>
