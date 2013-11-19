@@ -1,6 +1,3 @@
-var xyui = {};
-xyui.table = {};
-//var table = {};
 xyui.table.str2arr = function(s, rows, cols, del){
 	var arr = [];
 	var temp = s.split(/\s*\^\s*/);
@@ -89,8 +86,9 @@ xyui.table.import = function(specification, index){
 xyui.table.hl = function(event){
 	var t = xyui.table.find(event.target);
 	var obj = t.ancestor;
-	var row = Array.prototype.indexOf.call(t.childNodes, event.target.parentNode);
-	var col = Array.prototype.indexOf.call(event.target.parentNode.childNodes, event.target);
+	var rc = xyui.table.getCellrc(event.target);
+	var row = rc.row;
+	var col = rc.column;
 	var color = obj.specification.hlcolor || xyui.table.hl.color;
 	if(obj.specification.hl === "x")
 	{
@@ -112,14 +110,17 @@ xyui.table.hl = function(event){
 };
 xyui.table.hl.color = "rgba(0,0,0,0.3)";
 xyui.table.ll = function(event){
+	/*
 	var t = xyui.table.find(event.target);
 	var obj = t.ancestor;
 	var row = Array.prototype.indexOf.call(t.childNodes, event.target.parentNode);
 	var col = Array.prototype.indexOf.call(event.target.parentNode.childNodes, event.target);
+	*/
 	var t = xyui.table.find(event.target);
 	var obj = t.ancestor;
-	var row = Array.prototype.indexOf.call(t.childNodes, event.target.parentNode);
-	var col = Array.prototype.indexOf.call(event.target.parentNode.childNodes, event.target);
+	var rc = xyui.table.getCellrc(event.target);
+	var row = rc.row;
+	var col = rc.column;
 	if(obj.specification.hl === "x")
 	{
 		for(var i=0;i<obj.sizeV;i++)
@@ -185,6 +186,7 @@ xyui.table.ll.colorHeadV = "deepskyblue";
 xyui.table.ll.colorHeadX = "slategrey";
 xyui.table.ll.colorCell = "deepskyblue";
 xyui.table.create = function(rows, cols, parent, material, specification){
+	//-------------------------Creating and specifying ancsetor object
 	var obj = {};
 	obj.specification = {};
 	obj.avatar = {};
@@ -193,12 +195,17 @@ xyui.table.create = function(rows, cols, parent, material, specification){
 	obj.headX = {};
 	obj.body = [];
 	obj.item = [];
+	obj.litter = [];
+	obj.modified = [];
 	obj.fulfil = xyui.table.fulfil;
 	obj.fill = xyui.table.fill;
 	obj.fillB = xyui.table.fillB;
 	obj.fillHH = xyui.table.fillHH;
 	obj.fillHV = xyui.table.fillHV;
 	obj.import = xyui.table.import;
+	obj.add = xyui.table.add;
+	obj.update = xyui.table.update;
+	//--------------------------------------------------Table shell and table
 	var shell = document.createElement("div");
 	shell.className = "xyuiTableShell";
 	var t = document.createElement("table");
@@ -206,6 +213,18 @@ xyui.table.create = function(rows, cols, parent, material, specification){
 	t.ancestor = obj;
 	t.border = 0;
 	t.cellSpacing = 0;
+	var btnAdd = document.createElement("button");
+	btnAdd.type="button";
+	btnAdd.className = "buttonAdd";
+	btnAdd.innerHTML = "+";
+	btnAdd.onclick = function(){obj.add();};//event.target.parentNode.getElementsByClassName("xyuiTable")[0]
+	shell.appendChild(btnAdd);
+	var btnUpd = document.createElement("button");
+	btnUpd.type="button";
+	btnUpd.className = "buttonUpd";
+	btnUpd.innerHTML = "U";
+	btnUpd.onclick = function(){obj.update();};
+	shell.appendChild(btnUpd);
 	//---------------------------Creating of new table
 	var items = {};
 	if(typeof material === "string")
@@ -222,6 +241,7 @@ xyui.table.create = function(rows, cols, parent, material, specification){
 			td.className = "xyuiCell";
 			td.addEventListener("mouseover", xyui.table.hl);
 			td.addEventListener("mouseout", xyui.table.ll);
+			td.addEventListener("click", xyui.table.change);
 			//td.innerHTML = items[i][j];
 			obj.item[i][j] = td;
 			tr.appendChild(td);
@@ -274,6 +294,15 @@ xyui.table.create = function(rows, cols, parent, material, specification){
 			obj.headX.className = "xyuiHeadX";
 		obj.specification = specification;
 	}
+	//---------------------------------------Hidden form for exchange data with mysql
+	/*
+	var form = document.createElement("form");
+	form.method = "post";
+	form.action = 
+	var req = document.createElement("input");
+	req.type = "text";
+	req.name = 
+	*/
 	//----------------------------------Add to HTMLDOM and show tables on page
 	parent = parent || document.body;
 	shell.appendChild(t);
@@ -282,13 +311,67 @@ xyui.table.create = function(rows, cols, parent, material, specification){
 	return obj;
 };
 xyui.table.add = function(){
+	var temp = xyui.modal.showDialog(this.import("hh").join(",,"));
+	var tr = document.createElement("tr");
+	var n = this.sizeV;
+	(this.sizeV)++;
+	this.item[n] = [];
+	this.litter.push([]);
+	for(var i=0;i<this.sizeH;i++)
+	{
+		var td = document.createElement("td");
+		td.className = "xyuiCell";
+		td.addEventListener("mouseover", xyui.table.hl);
+		td.addEventListener("mouseout", xyui.table.ll);
+		td.innerHTML = temp[i];
+		this.item[n][i] = td;
+		tr.appendChild(td);
+		this.litter[this.litter.length-1][i] = temp[i];
+	}
+	this.avatar.appendChild(tr);
+};
+xyui.table.change = function(event){
+	var ans = xyui.modal.showDialog(event.target.innerHTML)[0];
+	event.target.innerHTML = ans;
+	var t = xyui.table.find(event.target);
+	var obj = t.ancestor;
+	var rc = xyui.table.getCellrc(event.target);
+	var row = rc.row;
+	var col = rc.column;
+	if(!obj.modified[obj.item[row][0].innerHTML])
+		obj.modified[obj.item[row][0].innerHTML] = [];
+	obj.modified[obj.item[row][0].innerHTML][col] = ans;
+};
+xyui.table.update = function(){
+	var req = [];
+	req[0] = this.litter;
+	req[1] = this.modified;
+	req[2] = this.tableName;
+	req[3] = window.prompt();
 	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST","updateSQLTable.php");
+	var data = JSON.stringify(req);
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === 4 && xhr.status === 200)
+			alert(xhr.responseText);
+			//xyui.modal.showDialog(xhr.responseText);
+	};
+	xhr.send(data);
 };
 xyui.table.find = function(element){
 	if(element.parentNode.className !== "xyuiTable")
 		return xyui.table.find(element.parentNode);
 	else
 		return element.parentNode;
+};
+xyui.table.getCellrc = function(c){
+	var rc = {};
+	var t = xyui.table.find(c);
+	rc.row = Array.prototype.indexOf.call(t.childNodes, c.parentNode);
+	rc.column = Array.prototype.indexOf.call(c.parentNode.childNodes, c);
+	return rc;
 };
 xyui.table.transpose = function(material){
 	var t = [];
