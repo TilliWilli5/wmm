@@ -1,0 +1,120 @@
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------WISHLIST------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+variant 1
+
+CREATE TABLE wishlist (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+name VARCHAR(100) NOT NULL,
+cost DECIMAL(9,3),
+status VARCHAR(20),
+info VARCHAR(200)
+) ENGINE = InnoDB;
+
+variant 2
+
+CREATE TABLE wishlist2 (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+name VARCHAR(100) NOT NULL,
+cost DECIMAL(9,3),
+cycle VARCHAR(10),
+status VARCHAR(20),
+info VARCHAR(200)
+) ENGINE = InnoDB
+
+variant 3
+
+CREATE TABLE wishlist3 (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+name VARCHAR(100) NOT NULL,
+cost DECIMAL(9,3),
+discount DECIMAL(9,3),
+cycle VARCHAR(10),
+status VARCHAR(20),
+specification VARCHAR(200)
+) ENGINE = InnoDB
+
+variant 4
+
+CREATE TABLE wishlist4 (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+name VARCHAR(100) NOT NULL,
+cost DECIMAL(9,3),
+discount DECIMAL(9,3),
+cycle VARCHAR(10),
+status VARCHAR(20),
+specification VARCHAR(200),
+expiration TIMESTAMP NULL
+) ENGINE = InnoDB
+
+INSERT INTO wishlist4 (name,cost,discount,cycle,specification) VALUES("",,NULL,NULL,NULL);		, ("",,NULL,NULL,NULL)
+INSERT INTO wishlist4 (name,cost,discount,cycle,specification) VALUES("",,NULL,"",NULL);		, ("",,NULL,"",NULL)
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------SCHEDULE---------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+variant 1
+
+CREATE TABLE schedule (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id),
+time TIME NOT NULL,
+name VARCHAR(100),
+status VARCHAR(20),
+specification VARCHAR(200)
+) ENGINE = InnoDB;
+
+variant 2
+
+CREATE TABLE schedule2 (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY(id),
+start TIME NOT NULL,
+end TIME,
+name VARCHAR(100),
+status VARCHAR(20),
+specification VARCHAR(200)
+) ENGINE = InnoDB;
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------OBJECTIVES----------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
+variant 1
+ 
+CREATE TABLE objectives (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+status VARCHAR(20),
+name VARCHAR(100),
+start TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+end TIMESTAMP,
+specification VARCHAR(200)
+) ENGINE = InnoDB;
+
+variant 2
+ 
+CREATE TABLE objectives2 (
+id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (id),
+status VARCHAR(20),
+name VARCHAR(100),
+exante TIMESTAMP,
+start TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+end TIMESTAMP,
+specification VARCHAR(200)
+) ENGINE = InnoDB;
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------ART----------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+
