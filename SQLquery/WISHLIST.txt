@@ -115,6 +115,28 @@ specification VARCHAR(200)
 ) ENGINE = InnoDB;
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
-//------------------------------------------------ART----------------------------------------------------------------------------------------
+//------------------------------------------------TIPS----------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
+variant 1
+ 
+CREATE TABLE tips (
+_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (_id),
+addTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+status VARCHAR(20),
+name VARCHAR(100),
+specification VARCHAR(200)
+) ENGINE = InnoDB;
+
+variant 2
+ 
+CREATE TABLE tips2 (
+_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+PRIMARY KEY (_id),
+_addTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+_status VARCHAR(20),
+name VARCHAR(100),
+category VARCHAR(100),
+specification VARCHAR(200)
+) ENGINE = InnoDB;
